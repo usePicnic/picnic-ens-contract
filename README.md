@@ -87,3 +87,10 @@ $ open coverage/index.html
 ```sh
 $ yarn deploy --network <NETWORK>
 ```
+
+### Addresses
+
+Contract Addresses
+
+| Contract | Address | | --- | --- | | Network |
+0xFf00e326f4EF31e69B96896c09EC67d65ae41946 | | 11155111 |

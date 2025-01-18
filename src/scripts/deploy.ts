@@ -27,6 +27,7 @@ async function main() {
 
   const implementation = await resolverFactory.deploy(...constructorArgs);
   await implementation.deployed();
+  console.log("-> Deployed implementation contract at", implementation);
   console.log("-> Deployed PicnicResolver contract at", implementation.address);
 }
 

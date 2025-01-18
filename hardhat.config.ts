@@ -1,5 +1,5 @@
 import "@nomiclabs/hardhat-waffle";
-import "@nomiclabs/hardhat-etherscan";
+import "@nomicfoundation/hardhat-verify";
 import "@typechain/hardhat";
 import "hardhat-gas-reporter";
 import "solidity-coverage";
@@ -13,7 +13,7 @@ import { HttpNetworkUserConfig } from "hardhat/types";
 dotenvConfig({ path: resolve(__dirname, "./.env") });
 
 const chainIds = {
-  goerli: 5,
+  sepolia: 11155111,
   hardhat: 31337,
   kovan: 42,
   mainnet: 1,
@@ -68,7 +68,7 @@ const config: HardhatUserConfig = {
         : { mnemonic },
       chainId: chainIds.hardhat,
     },
-    goerli: getChainConfig("goerli"),
+    sepolia: getChainConfig("sepolia"),
     kovan: getChainConfig("kovan"),
     rinkeby: getChainConfig("rinkeby"),
     ropsten: getChainConfig("ropsten"),
@@ -101,6 +101,11 @@ const config: HardhatUserConfig = {
   },
   etherscan: {
     apiKey: etherscanApiKey,
+  },
+  sourcify: {
+    // Disabled by default
+    // Doesn't need an API key
+    enabled: true,
   },
 };
 

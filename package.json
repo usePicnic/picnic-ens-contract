@@ -45,7 +45,7 @@
     "clean": "shx rm -rf ./artifacts ./cache ./coverage ./src/types ./coverage.json",
     "compile": "cross-env TS_NODE_TRANSPILE_ONLY=true hardhat compile",
     "coverage": "yarn typechain && hardhat coverage --solcoverjs ./.solcover.js --temp artifacts --testfiles \"test/**/*.ts\"",
-    "deploy": "hardhat run src/scripts/deploy.ts",
+    "deploy": "npx hardhat ignition deploy src/scripts/deploy.ts",
     "lint": "yarn lint:sol && yarn lint:ts && yarn prettier:check",
     "lint:sol": "solhint --config ./.solhint.json --max-warnings 0 \"contracts/**/*.sol\"",
     "lint:ts": "eslint --config ./.eslintrc.yaml --ignore-path ./.eslintignore --ext .js,.ts .",
@@ -57,6 +57,7 @@
   },
   "dependencies": {
     "@ensdomains/ens-contracts": "^0.0.11",
+    "@nomicfoundation/hardhat-verify": "^2.0.12",
     "@openzeppelin/contracts": "^4.5.0"
   }
 }
