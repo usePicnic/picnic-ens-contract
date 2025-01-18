@@ -1,6 +1,6 @@
 import { ethers } from "hardhat";
 import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/dist/src/signer-with-address";
-import type { CoinbaseResolver } from "../src/types";
+import type { PicnicResolver } from "../src/types";
 import { encode } from "../src/dnsname";
 import { expect } from "chai";
 import { BytesLike, utils, Wallet } from "ethers";
@@ -15,7 +15,7 @@ const iResolver = Resolver__factory.createInterface();
 const iResolverService = IResolverService__factory.createInterface();
 const iExtendedResolver = IExtendedResolver__factory.createInterface();
 
-describe("CoinbaseResolver", () => {
+describe("PicnicResolver", () => {
   const url = "https://example.com/r/{sender}/{data}";
 
   let deployer: SignerWithAddress;
@@ -26,24 +26,25 @@ describe("CoinbaseResolver", () => {
   let user: SignerWithAddress;
   let user2: SignerWithAddress;
 
-  let resolver: CoinbaseResolver;
+  let resolver: PicnicResolver;
 
   before(async () => {
     signer = ethers.Wallet.createRandom().connect(ethers.provider);
-
     let user3: SignerWithAddress;
+
+    console.log("total signers", (await ethers.getSigners()).length);
     [deployer, owner, signerManager, gatewayManager, user, user2, user3] =
       await ethers.getSigners();
 
     // fund signer address
-    await user3.sendTransaction({
+    await user3?.sendTransaction({
       to: signer.address,
       value: (await user3.getBalance()).div(2),
     });
   });
 
   beforeEach(async () => {
-    const resolverFactory = await ethers.getContractFactory("CoinbaseResolver");
+    const resolverFactory = await ethers.getContractFactory("PicnicResolver");
     resolver = await resolverFactory
       .connect(deployer)
       .deploy(

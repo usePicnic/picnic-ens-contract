@@ -10,10 +10,10 @@ import { SignatureVerifier } from "./ens-offchain-resolver/SignatureVerifier.sol
 import { IResolverService } from "./ens-offchain-resolver/IResolverService.sol";
 
 /**
- * @notice Coinbase Offchain ENS Resolver.
- * @dev Adapted from: https://github.com/ensdomains/offchain-resolver/blob/2bc616f19a94370828c35f29f71d5d4cab3a9a4f/packages/contracts/contracts/OffchainResolver.sol
+ * @notice Picnic Offchain ENS Resolver.
+ * @dev Adapted from: https://github.com/CoinbaseStablecoin/coinbase-ens-contract/blob/6a0d745a2faf1f44061342f1e6f802400a860b3a/contracts/CoinbaseResolver.sol
  */
-contract CoinbaseResolver is ERC165, Manageable, IExtendedResolver {
+contract PicnicResolver is ERC165, Manageable, IExtendedResolver {
     using EnumerableSet for EnumerableSet.AddressSet;
 
     /// @dev Gateway URL to use to perform offchain lookup.
@@ -191,7 +191,7 @@ contract CoinbaseResolver is ERC165, Manageable, IExtendedResolver {
         );
         require(
             _signers.contains(signer),
-            "CoinbaseResolver::resolveWithProof: invalid signature"
+            "PicnicResolver::resolveWithProof: invalid signature"
         );
         return result;
     }
