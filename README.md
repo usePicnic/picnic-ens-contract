@@ -85,7 +85,7 @@ $ open coverage/index.html
 ### Deployment
 
 ```sh
-$ yarn deploy --network <NETWORK>
+$ forge script scripts_forge/deploy.s.sol:Deploy --rpc-url <RPC> --private-key <PRIVATE_KEY>  -- --vvvv
 ```
 
 ### Addresses
