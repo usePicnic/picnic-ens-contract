@@ -48,3 +48,17 @@ yarn-error.log*
 
 # types
 src/types/**
+
+cache_forge/
+out/
+
+# Ignores development broadcast logs
+!/broadcast
+/broadcast/*/1/
+/broadcast/**/dry-run/
+
+# Docs
+docs/
+
+# foundry lib
+lib/

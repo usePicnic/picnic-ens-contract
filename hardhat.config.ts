@@ -3,6 +3,7 @@ import "@nomicfoundation/hardhat-verify";
 import "@typechain/hardhat";
 import "hardhat-gas-reporter";
 import "solidity-coverage";
+import "@nomicfoundation/hardhat-foundry";
 
 import { resolve } from "path";
 
@@ -69,9 +70,11 @@ const config: HardhatUserConfig = {
       chainId: chainIds.hardhat,
     },
     sepolia: getChainConfig("sepolia"),
-    kovan: getChainConfig("kovan"),
-    rinkeby: getChainConfig("rinkeby"),
-    ropsten: getChainConfig("ropsten"),
+    mainnet: {
+      url: "https://mainnet.infura.io/v3/" + infuraApiKey,
+      accounts: privateKey ? [privateKey] : { mnemonic },
+      chainId: chainIds.mainnet,
+    },
   },
   paths: {
     artifacts: "./artifacts",
