@@ -277,7 +277,7 @@ describe("PicnicResolver", () => {
   });
 
   describe("resolution", () => {
-    const name = "pete.eth";
+    const name = "usepicnic.eth";
     const dnsName = encode(name);
     const addrCallData = (iResolver as utils.Interface).encodeFunctionData(
       "addr(bytes32)",
